@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ded7p4uxyectv"]
+
+[ext_resource type="Texture2D" uid="uid://sg2ew4705ctg" path="res://assets/Characters/Premium Charakter Spritesheet.png" id="1_8d0w6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_keq4q"]
+atlas = ExtResource("1_8d0w6")
+region = Rect2(16, 16, 16, 16)
+
+[node name="player" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_keq4q")
+
+[node name="Camera2D" type="Camera2D" parent="Sprite2D"]
+zoom = Vector2(8, 8)
