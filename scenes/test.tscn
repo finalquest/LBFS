@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://22n0rx3t1vjc"]
+
+[ext_resource type="PackedScene" uid="uid://be4fcnkhk67lw" path="res://scenes/tool.tscn" id="1_d87ft"]
+
+[node name="Tool" instance=ExtResource("1_d87ft")]

@@ -2,8 +2,7 @@ extends Node2D
 @onready var map: TileMap = $"../Map"
 @onready var timer: Timer = $Timer
 
-var is_moving = false;
-
+@export var moving_speed = 100.0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,11 +10,10 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
+func _process(delta):
 	# current tile position
 	if !timer.is_stopped():
 		return
-	var tile_pos = map.local_to_map(global_position)
 	var direction: Vector2i = Vector2.ZERO
 	if Input.is_action_pressed("down"):
 		rotation = deg_to_rad(180)
@@ -30,7 +28,16 @@ func _process(_delta):
 		rotation = deg_to_rad(90)
 		direction = Vector2.RIGHT
 
-	var target_pos = tile_pos + direction
-	timer.start();
-	global_position = map.map_to_local(target_pos)
+	# move
+	var next_pos = global_position + direction * moving_speed * delta;
+	var title_pos = map.local_to_map(next_pos)
+	# print(title_pos, map.get_walkable(title_pos))
+	if(map.get_walkable(title_pos) == false):
+		return
+
+	global_position = next_pos
+
+	# timer.start();
+	# global_position = map.map_to_local(target_pos)
+	map.set_cell(0, map.local_to_map(global_position), 0, Vector2i(1,1))
 
