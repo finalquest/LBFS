@@ -8,8 +8,8 @@ func _ready():
 	pass # Replace with function body.
 
 func _physics_process(_delta):
-	# var directtion = Input.get_vector("left", "right", "up", "down")
-	# velocity = directtion * moving_speed
+	var directtion = Input.get_vector("left", "right", "up", "down")
+	velocity = directtion * moving_speed
 	move_and_slide()
 
 
